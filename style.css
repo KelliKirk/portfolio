@@ -1,0 +1,454 @@
+/* Root variables - Updated with style guide colors */
+:root {
+    --primary-accent: #5A7D9A;
+    --secondary-accent: #8BA4B8;
+    --primary-color: #333333;
+    --secondary-color: #7a7a7a;
+    --background-color: #cdcdcd;
+    --light-background: #e7e7e7;
+    --lighter-background: #f4f4f4;
+    --menu-bg: rgba(236, 223, 223, 0.95);
+    --text-color: #333;
+}
+
+/* Global styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+}
+
+/* Navigation - Improved spacing and positioning */
+.navigation {
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    margin: 0.5rem 1.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-shadow: 0 0 10px rgba(236, 223, 223, 0.3);
+    text-decoration: none;
+}
+
+.nav-item.active {
+    color: var(--primary-accent);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.nav-item:hover {
+    transform: translateY(-5px);
+}
+
+.nav-item:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-accent);
+    transition: width 0.3s;
+}
+
+.nav-item:hover:after,
+.nav-item.active:after {
+    width: 100%;
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Entrance Room - Background effect */
+#entrance-room {
+    background-color: var(--secondary-color);
+    background-image: url('images/wall1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#entrance-room::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(236, 223, 223, 0.4), rgba(0, 0, 0, 0.2));
+    z-index: 0;
+}
+
+/* Restructured room content for text above and door centered */
+.room-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+/* Improved intro text - Centered with background */
+.intro-text {
+    text-align: center;
+    max-width: 100%;
+    margin: 2rem auto;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 8px;
+    text-shadow: 0 0 10px rgb(248, 245, 245);
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Door container for centering */
+.door-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Updated Door Styles with lighter colors */
+.door {
+    width: 350px;
+    height: 650px;
+    background-color: #a9a6a6; /* Lighter gray instead of black */
+    border-radius: 10px 10px 4px 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    border: 8px solid #e0e0e0; /* Lighter border color */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Wood panel effect with style guide colors */
+.door::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 25px;
+    right: 25px;
+    bottom: 50px;
+    background-color: rgba(90, 125, 154, 0.5); /* Accent color (Aktsentvärv) */
+    border: 3px solid var(--secondary-accent); /* Secondary accent color */
+    border-radius: 5px;
+    z-index: 0;
+}
+
+.door:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    background-color: #9f9c9c; /* Slightly darker on hover but not too dark */
+}
+
+.door-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Updated door logo with increased transparency */
+.door-logo {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: auto;
+    opacity: 0.5; /* More transparent */
+    z-index: 1;
+}
+
+/* Updated door knob to use accent color */
+.door-knob {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: var(--secondary-accent); /* Secondary accent color */
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+/* Door knocker with accent color */
+.door-knob::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--primary-accent); /* Accent color */
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Close button for mobile menu */
+.close-menu {
+    display: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Footer styles to match navbar */
+.footer {
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: var(--menu-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-title {
+    font-weight: 700;
+    color: var(--primary-accent);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.footer-title:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-accent);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-item {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-item:hover {
+    color: var(--primary-accent);
+    transform: translateY(-3px);
+}
+
+/* Responsive Styles - Improved for mobile */
+@media (max-width: 992px) {
+    .door {
+        width: 300px;
+        height: 550px;
+    }
+    
+    .intro-text {
+        max-width: 80%;
+        margin: 0 auto 2rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Improved intro text on mobile */
+    .intro-text {
+        max-width: 90%;
+        width: 90%; /* Ensures the width is controlled */
+        margin: 2rem auto;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 1.5rem;
+        box-sizing: border-box; /* Prevents padding from extending the width */
+    }
+
+    /* Hamburger menu activation */
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Updated mobile menu styling to be lighter */
+    .nav-items {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--menu-bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.5s ease;
+        z-index: 9;
+    }
+    
+    .nav-items.active {
+        right: 0;
+    }
+    
+    .nav-item {
+        margin: 1.5rem 0;
+        font-size: 1.3rem;
+        color: var(--text-color);
+    }
+    
+    .close-menu {
+        display: block;
+    }
+    
+    .door {
+        width: 250px;
+        height: 500px;
+    }
+    
+    .door-logo {
+        width: 150px;
+    }
+    
+    .room-content {
+        padding: 0 1rem; /* Reduced side padding */
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-text {
+        font-size: 1.1rem;
+        padding: 1rem;
+        width: 85%; /* Slightly narrower on very small screens */
+    }
+    
+    .door {
+        width: 220px;
+        height: 450px;
+    }
+    
+    .door-logo {
+        width: 120px;
+    }
+}
+
+/* Page transition */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+/* Door knock animation */
+.door.knock {
+    animation: doorKnock 0.5s;
+}
+
+@keyframes doorKnock {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+/* Typography settings based on style guide */
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 36px;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 28px;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 22px;
+}
+
+p, button, a, li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 16px;
+}
