@@ -583,7 +583,7 @@ p, button, a, li {
 /* Reposition navigation arrows to bottom corners */
 .nav-arrow {
     position: absolute;
-    top: 100%;
+    top: 110%;
     width: 233px !important;
     height: 100px !important;
     background-color: rgba(217, 217, 217, 0.50) !important;
