@@ -555,21 +555,6 @@ p, button, a, li {
     display: none;
 }
 
-/* Add hover effect to clickable areas */
-.clickable-area {
-    position: absolute;
-    cursor: pointer;
-    z-index: 5;
-    transition: all 0.3s ease;
-    border-radius: 10px;
-}
-
-.clickable-area:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(90, 125, 154, 0.5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-}
-
 /* Reposition navigation arrows to bottom corners */
 .nav-arrow {
     position: absolute;
@@ -699,14 +684,6 @@ p, button, a, li {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.bookshelf-note {
-    top: 80% !important;
-}
-
-.screen-note {
-    top: 85% !important;
-}
-
 .guidance-note p {
     margin: 0;
     font-size: 14px;
@@ -727,6 +704,34 @@ p, button, a, li {
 
 .guidance-note.active p {
     color: white;
+}
+
+/* Update guidance note styling to make them clickable */
+.guidance-note.clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.guidance-note.clickable:hover {
+    background-color: rgba(90, 125, 154, 0.7);
+    transform: translateY(-3px) !important;
+}
+
+.guidance-note.clickable:hover p {
+    color: white;
+}
+
+/* Updated positions for guidance notes */
+.bookshelf-note {
+    left: 15%;
+    top: 70%; /* Position below the bookshelf */
+    transform: none;
+}
+
+.screen-note {
+    left: 50%;
+    top: 90%; /* Position below the screen */
+    transform: translateX(-50%);
 }
 
 .guidance-arrow {

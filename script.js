@@ -126,33 +126,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
     
-    // Handle clickable areas with improved hover effects
-    const clickableAreas = document.querySelectorAll('.clickable-area');
+    // Make guidance notes clickable and handle hover effects
+    const guidanceNotes = document.querySelectorAll('.guidance-note.clickable');
     
-    clickableAreas.forEach(area => {
-        // Add hover event listeners for subtle highlighting
-        area.addEventListener('mouseenter', function() {
-            this.classList.add('area-hover');
-            
-            // Show guidance note when hovering
-            const guidanceNote = this.previousElementSibling;
-            if (guidanceNote && guidanceNote.classList.contains('guidance-note')) {
-                guidanceNote.classList.add('active');
-            }
-        });
-        
-        area.addEventListener('mouseleave', function() {
-            this.classList.remove('area-hover');
-            
-            // Hide guidance note when not hovering
-            const guidanceNote = this.previousElementSibling;
-            if (guidanceNote && guidanceNote.classList.contains('guidance-note')) {
-                guidanceNote.classList.remove('active');
-            }
-        });
-        
-        // Click event to open the modal
-        area.addEventListener('click', function() {
+    guidanceNotes.forEach(note => {
+        // Add click event to open the modal
+        note.addEventListener('click', function() {
             const modalId = this.getAttribute('data-target');
             try {
                 const modalElement = document.querySelector(modalId);
@@ -166,10 +145,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error opening modal:', error);
             }
         });
+        
+        // Add hover event listeners for highlighting
+        note.addEventListener('mouseenter', function() {
+            this.classList.add('active');
+        });
+        
+        note.addEventListener('mouseleave', function() {
+            this.classList.remove('active');
+        });
     });
     
     // Make guidance notes initially visible, then fade after 3 seconds
-    const guidanceNotes = document.querySelectorAll('.guidance-note');
     guidanceNotes.forEach(note => {
         note.classList.add('visible');
         
@@ -231,47 +218,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call the function to update arrows
     updateNavArrows();
     
-    // IMPORTANT: Updated positioning for clickable areas and guidance notes
-    const adjustClickableAreas = () => {
-        const bookshelfArea = document.querySelector('.bookshelf-area');
-        const clockArea = document.querySelector('.clock-area');
-        const bookshelfNote = document.querySelector('.bookshelf-note');
-        const screenNote = document.querySelector('.screen-note');
-        
-        if (bookshelfArea) {
-            bookshelfArea.style.left = '15%';
-            bookshelfArea.style.top = '40%';
-            bookshelfArea.style.width = '180px';
-            bookshelfArea.style.height = '250px';
-        }
-        
-        if (clockArea) {
-            clockArea.style.left = '50%';
-            clockArea.style.top = '45%';
-            clockArea.style.width = '300px';
-            clockArea.style.height = '200px';
-            clockArea.style.transform = 'translateX(-50%)';
-            clockArea.style.zIndex = '3';
-        }
-        
-        // Position guidance notes - IMPORTANT CHANGES HERE
-        if (bookshelfNote) {
-            bookshelfNote.style.left = '15%';
-            bookshelfNote.style.top = '35%'; // Position ABOVE the clickable area
-            bookshelfNote.style.transform = 'translateY(-100%)'; // Move it up by its own height
-        }
-        
-        if (screenNote) {
-            screenNote.style.left = '50%';
-            screenNote.style.top = '35%'; // Position ABOVE the clickable area
-            screenNote.style.transform = 'translate(-50%, -100%)'; // Center horizontally and move up
-        }
-    };
+    const guidanceNotes2 = document.querySelectorAll('.guidance-note');
+    guidanceNotes2.forEach(note => {
+        note.style.cursor = 'pointer';
+    });
     
-    // Call the function to adjust clickable areas
-    adjustClickableAreas();
-    
-    // Rest of your code...
     // Door animations and interactions
     const doors = document.querySelectorAll('.door');
     
@@ -327,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // NEW: Navigation arrows page turning effect
+    // Navigation arrows page turning effect
     const navArrows = document.querySelectorAll('.nav-arrow');
     
     navArrows.forEach(arrow => {
