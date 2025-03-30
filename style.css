@@ -643,16 +643,23 @@ p, button, a, li {
         "text-wrap text-wrap";
     gap: 20px;
     margin-bottom: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .profile-image {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    grid-area: image;
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    shape-outside: circle(125px at center);
     object-fit: cover;
     border: 3px solid var(--primary-accent);
-    justify-self: end;
+    position: static; 
+    top: auto;
 }
 
 .about-text {
@@ -778,6 +785,13 @@ p, button, a, li {
             justify-items: center;
             text-align: center;
         }
+    }
+
+    .profile-image {
+        float: none;
+        margin: 0 auto 20px;
+        shape-outside: none;
+        display: block;
     }
 }
 
