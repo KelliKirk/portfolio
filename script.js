@@ -133,15 +133,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add hover event listeners for subtle highlighting
         area.addEventListener('mouseenter', function() {
             this.classList.add('area-hover');
+            
+            // Show guidance note when hovering
+            const guidanceNote = this.previousElementSibling;
+            if (guidanceNote && guidanceNote.classList.contains('guidance-note')) {
+                guidanceNote.classList.add('active');
+            }
         });
         
         area.addEventListener('mouseleave', function() {
             this.classList.remove('area-hover');
+            
+            // Hide guidance note when not hovering
+            const guidanceNote = this.previousElementSibling;
+            if (guidanceNote && guidanceNote.classList.contains('guidance-note')) {
+                guidanceNote.classList.remove('active');
+            }
         });
         
         // Click event to open the modal
         area.addEventListener('click', function() {
-            console.log('Clickable area clicked:', this.getAttribute('data-target'));
             const modalId = this.getAttribute('data-target');
             try {
                 const modalElement = document.querySelector(modalId);
@@ -155,6 +166,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error opening modal:', error);
             }
         });
+    });
+    
+    // Make guidance notes initially visible, then fade after 3 seconds
+    const guidanceNotes = document.querySelectorAll('.guidance-note');
+    guidanceNotes.forEach(note => {
+        note.classList.add('visible');
+        
+        setTimeout(() => {
+            note.classList.remove('visible');
+        }, 3000);
     });
     
     // Fix modal closing issue
@@ -210,10 +231,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call the function to update arrows
     updateNavArrows();
     
-    // Correctly position the clickable areas based on the prototype
+    // IMPORTANT: Updated positioning for clickable areas and guidance notes
     const adjustClickableAreas = () => {
         const bookshelfArea = document.querySelector('.bookshelf-area');
         const clockArea = document.querySelector('.clock-area');
+        const bookshelfNote = document.querySelector('.bookshelf-note');
+        const screenNote = document.querySelector('.screen-note');
         
         if (bookshelfArea) {
             bookshelfArea.style.left = '15%';
@@ -228,16 +251,27 @@ document.addEventListener('DOMContentLoaded', function() {
             clockArea.style.width = '300px';
             clockArea.style.height = '200px';
             clockArea.style.transform = 'translateX(-50%)';
-            // Add additional visual feedback for debugging
             clockArea.style.zIndex = '3';
-            // Make it more visible during development if needed
-            // clockArea.style.border = '2px dashed rgba(255, 0, 0, 0.3)';
+        }
+        
+        // Position guidance notes - IMPORTANT CHANGES HERE
+        if (bookshelfNote) {
+            bookshelfNote.style.left = '15%';
+            bookshelfNote.style.top = '35%'; // Position ABOVE the clickable area
+            bookshelfNote.style.transform = 'translateY(-100%)'; // Move it up by its own height
+        }
+        
+        if (screenNote) {
+            screenNote.style.left = '50%';
+            screenNote.style.top = '35%'; // Position ABOVE the clickable area
+            screenNote.style.transform = 'translate(-50%, -100%)'; // Center horizontally and move up
         }
     };
     
     // Call the function to adjust clickable areas
     adjustClickableAreas();
     
+    // Rest of your code...
     // Door animations and interactions
     const doors = document.querySelectorAll('.door');
     
@@ -293,9 +327,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // NEW: Navigation arrows page turning effect
+    const navArrows = document.querySelectorAll('.nav-arrow');
+    
+    navArrows.forEach(arrow => {
+        arrow.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Get the href attribute for navigation
+            const href = this.getAttribute('href');
+            
+            // Create page turning effect
+            const pageTurn = document.createElement('div');
+            pageTurn.className = 'page-turn-effect';
+            document.body.appendChild(pageTurn);
+            
+            // Determine direction based on arrow class
+            const isRightArrow = this.classList.contains('nav-arrow-right');
+            
+            // Set initial position of the turning page
+            if (isRightArrow) {
+                pageTurn.style.left = '0';
+                pageTurn.style.transformOrigin = 'right center';
+            } else {
+                pageTurn.style.right = '0';
+                pageTurn.style.transformOrigin = 'left center';
+            }
+            
+            // Start the page turn animation
+            setTimeout(() => {
+                if (isRightArrow) {
+                    pageTurn.style.transform = 'rotateY(-90deg)';
+                } else {
+                    pageTurn.style.transform = 'rotateY(90deg)';
+                }
+                
+                // Change page when animation is halfway complete
+                setTimeout(() => {
+                    // Create a full-page overlay for smooth transition
+                    const fullOverlay = document.createElement('div');
+                    fullOverlay.className = 'page-transition';
+                    document.body.appendChild(fullOverlay);
+                    
+                    // Make it visible
+                    setTimeout(() => {
+                        fullOverlay.style.transform = 'translateX(0)';
+                        
+                        // Navigate to new page
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }, 10);
+                }, 300);
+            }, 50);
+            
+            // Prevent default link behavior
+            event.preventDefault();
+        });
+    });
+    
     // Add entrance animation
     window.addEventListener('pageshow', function(event) {
         const transition = document.querySelector('.page-transition');
+        const pageTurn = document.querySelector('.page-turn-effect');
         
         if (transition) {
             transition.style.transform = 'translateX(-100%)';
@@ -303,6 +397,10 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 transition.remove();
             }, 500);
+        }
+        
+        if (pageTurn) {
+            pageTurn.remove();
         }
     });
     

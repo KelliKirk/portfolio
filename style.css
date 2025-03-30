@@ -108,7 +108,7 @@ body, html {
 }
 
 /* Entrance Room - Background effect */
-#entrance-room {
+#entrance-room{
     background-color: var(--secondary-color);
     background-image: url('images/wall1.jpg');
     background-size: cover;
@@ -121,7 +121,7 @@ body, html {
     align-items: center;
 }
 
-#entrance-room::before {
+#entrance-room::before, #about-room::before {
     content: '';
     position: absolute;
     top: 0;
@@ -453,7 +453,7 @@ p, button, a, li {
     font-size: 16px;
 }
 
-.about-room-content {
+.about-room {
     background-color: var(--secondary-color);
     background-image: url('images/workspace.jpg');
     background-size: cover;
@@ -464,17 +464,6 @@ p, button, a, li {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#about-room-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(236, 223, 223, 0.4), rgba(0, 0, 0, 0.2));
-    z-index: 0;
 }
 
 /* Navigation arrows */
@@ -517,6 +506,7 @@ p, button, a, li {
 
 .arrow {
     border: solid white;
+    border-color: #333333;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 6px;
@@ -583,7 +573,7 @@ p, button, a, li {
 /* Reposition navigation arrows to bottom corners */
 .nav-arrow {
     position: absolute;
-    top: 110%;
+    top: 90%;
     width: 233px !important;
     height: 100px !important;
     background-color: rgba(217, 217, 217, 0.50) !important;
@@ -641,19 +631,21 @@ p, button, a, li {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Style modals with transparency */
-.modal-content {
-    background-color: rgba(244, 244, 244, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Glass effect for modals */
-.glass-effect {
-    background-color: rgba(244, 244, 244, 0.9);
+/* Modal styling enhancements for glass effect */
+.modal-content.glass-effect {
+    background-color: rgba(217, 217, 217, 0.50);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -663,22 +655,107 @@ p, button, a, li {
     align-items: flex-start;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    margin-right: 20px;
-    margin-bottom: 15px;
+    margin-left: 20px;
+    top: 45%;
     object-fit: cover;
     border: 3px solid var(--primary-accent);
+    order: 2;
 }
 
 .about-text {
     flex: 1;
     min-width: 250px;
     line-height: 1.6;
+    order: 1;
+}
+
+/* Guidance notes styling */
+.guidance-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.guidance-note {
+    position: absolute;
+    background-color: rgba(217, 217, 217, 0.70);
+    border-radius: 8px;
+    padding: 10px 15px;
+    max-width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    z-index: 4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.bookshelf-note {
+    top: 80% !important;
+}
+
+.screen-note {
+    top: 85% !important;
+}
+
+.guidance-note p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.guidance-note.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.guidance-note.active {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: rgba(90, 125, 154, 0.7);
+}
+
+.guidance-note.active p {
+    color: white;
+}
+
+.guidance-arrow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(217, 217, 217, 0.70);
+    transition: border-top-color 0.3s ease;
+}
+
+.guidance-note.active .guidance-arrow {
+    border-top-color: rgba(90, 125, 154, 0.7);
+}
+
+/* Page turn effect */
+.page-turn-effect {
+    position: fixed;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 
 /* Responsive adjustments for about modal */
@@ -694,3 +771,33 @@ p, button, a, li {
         margin-bottom: 20px;
     }
 }
+
+/* Responsive adjustments for guidance notes */
+@media (max-width: 768px) {
+    .guidance-note {
+        max-width: 160px;
+        padding: 8px 12px;
+    }
+    
+    .guidance-note p {
+        font-size: 12px;
+    }
+    
+    /* Adjust profile layout for mobile */
+    .about-profile {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-image {
+        margin-left: 0;
+        margin-bottom: 20px;
+        order: 1;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+}
+
