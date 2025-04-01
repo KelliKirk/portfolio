@@ -367,4 +367,44 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = '';
         });
     });
+    
+    // Skills progress bar animation
+    const animateSkills = () => {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        if (progressBars.length > 0) {
+            progressBars.forEach(bar => {
+                const targetWidth = bar.getAttribute('data-skill') + '%';
+                
+                // Set initial width to 0
+                bar.style.width = '0%';
+                
+                // Animate to target width with slight delay for each bar
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 300);
+            });
+        }
+    };
+    
+    // Check if we're on the skills page
+    if (document.querySelector('.skills-board')) {
+        // Trigger animation when page loads
+        window.addEventListener('load', animateSkills);
+        
+        // Also animate on scroll into view for mobile
+        const skillsBoard = document.querySelector('.skills-board');
+        const checkIfInView = () => {
+            const rect = skillsBoard.getBoundingClientRect();
+            const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+            
+            if (inView) {
+                animateSkills();
+                window.removeEventListener('scroll', checkIfInView);
+            }
+        };
+        
+        window.addEventListener('scroll', checkIfInView);
+        checkIfInView(); // Check once on load
+    }
 });
