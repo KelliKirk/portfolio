@@ -123,11 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectsDataBootstrap = {
         projekt1: {
             title: 'Website for OLLIE',
-            image: '/api/placeholder/600/400',
+            image: 'images/olliefansite.jpg',
             description: 'A website for the singer OLLIE',
             process: 'I designed this website from scratch, starting with wireframing. The idea was creating a fansite since I like his music, but as I finished it, I could also see this website being his official website at some point, as I intend to keep working on it and adding more features while learning new technologies.',
             technologies: ['HTML5', 'CSS3', 'Bootstrap'],
-            link: '#'
+            link: 'https://vso24kirk.ita.voco.ee/veebiarendus/L6puprojekt/ollie_fansite/'
         },
         projekt2: {
             title: 'Hackathon Grading App Design',
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'A design for the hackathon scoring app',
             process: 'This app was created as a group project for the hackathon scoring in my school. I was responsible for the prototype, design and front-end coding.',
             technologies: ['React', 'Node.js', 'Figma', 'Prototyping', 'HTML5', 'CSS3'],
-            link: '#'
+            link: 'https://hindamine.ita.voco.ee/'
         },
         projekt3: {
             title: 'Memory Game',
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'A simple memory game with three different difficulties',
             process: 'This memory game was created as another group project. The inspiration came from the Youtube video where someone was building a memory game. It uses a simulated API to fetch data from the mock database for scoring.',
             technologies: ['React', 'Node.js', 'HTML5', 'CSS3'],
-            link: '#'
+            link: 'https://github.com/KelliKirk/memory_game'
         },
         projekt4: {
             title: 'Northern Lights Login Form',
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'A login form inspired by Northern Lights',
             process: 'The inspiration for this login form came from seeing the Northern Lights. I created a simple login form and then added animations and styling to replicate the effect of Northern Lights.',
             technologies: ['HTML5', 'CSS3'],
-            link: '#'
+            link: 'https://github.com/KelliKirk/Personal-Projects/tree/main/Coding%20practice'
         }
     };
     
