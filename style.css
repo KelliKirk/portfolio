@@ -961,13 +961,14 @@ p, button, a, li {
 /* Project Thumbnails */
 .project-thumbnail {
     position: relative;
-    border: 8px solid #3a3a3a;
+    border: 8px solid #333;
     border-radius: 5px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #f5f5f5;
+    bottom: 30%;
 }
 
 .project-thumbnail img {

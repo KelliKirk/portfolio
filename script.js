@@ -122,35 +122,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Project data for Bootstrap modals - replace with your actual projects
     const projectsDataBootstrap = {
         projekt1: {
-            title: 'E-commerce Website',
+            title: 'Website for OLLIE',
             image: '/api/placeholder/600/400',
-            description: 'A fully responsive e-commerce website with product catalog, shopping cart, and checkout functionality.',
-            process: 'I designed this e-commerce platform from scratch, starting with user research and wireframing. The main challenge was creating an intuitive shopping experience while maintaining fast loading times. I implemented custom filters for product searches and optimized images for quick loading.',
-            technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
+            description: 'A website for the singer OLLIE',
+            process: 'I designed this website from scratch, starting with wireframing. The idea was creating a fansite since I like his music, but as I finished it, I could also see this website being his official website at some point, as I intend to keep working on it and adding more features while learning new technologies.',
+            technologies: ['HTML5', 'CSS3', 'Bootstrap'],
             link: '#'
         },
         projekt2: {
-            title: 'Personal Blog',
-            image: '/api/placeholder/600/400',
-            description: 'A minimalist blog template with content management system and comment functionality.',
-            process: 'For this personal blog project, I focused on typography and readability. I built a custom CMS that allows easy content updates without technical knowledge. The design adapts seamlessly to different screen sizes while maintaining excellent readability.',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+            title: 'Hackathon Grading App Design',
+            image: 'images/gradingapp.jpg',
+            description: 'A design for the hackathon scoring app',
+            process: 'This app was created as a group project for the hackathon scoring in my school. I was responsible for the prototype, design and front-end coding.',
+            technologies: ['React', 'Node.js', 'Figma', 'Prototyping', 'HTML5', 'CSS3'],
             link: '#'
         },
         projekt3: {
-            title: 'Mobile App Design',
-            image: '/api/placeholder/600/400',
-            description: 'UI/UX design for a fitness tracking mobile application with workout plans and progress tracking.',
-            process: 'This mobile app design project began with extensive user interviews to understand fitness tracking needs. I created a design system with consistent UI components and intuitive navigation patterns. The final design was tested with potential users and refined based on their feedback.',
-            technologies: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping'],
+            title: 'Memory Game',
+            image: 'images/memorygame.jpg',
+            description: 'A simple memory game with three different difficulties',
+            process: 'This memory game was created as another group project. The inspiration came from the Youtube video where someone was building a memory game. It uses a simulated API to fetch data from the mock database for scoring.',
+            technologies: ['React', 'Node.js', 'HTML5', 'CSS3'],
             link: '#'
         },
         projekt4: {
-            title: 'Portfolio Redesign',
-            image: '/api/placeholder/600/400',
-            description: 'A complete redesign of a professional portfolio website with 3D room navigation concept.',
-            process: 'For this portfolio redesign, I wanted to create something unique and memorable. I implemented the 3D room navigation concept to provide an immersive experience. Each room represents a different section of the portfolio, with interactive elements to display projects and skills.',
-            technologies: ['HTML5', 'CSS3', 'JavaScript', 'Three.js', 'Bootstrap'],
+            title: 'Northern Lights Login Form',
+            image: 'images/loginform1.jpg',
+            description: 'A login form inspired by Northern Lights',
+            process: 'The inspiration for this login form came from seeing the Northern Lights. I created a simple login form and then added animations and styling to replicate the effect of Northern Lights.',
+            technologies: ['HTML5', 'CSS3'],
             link: '#'
         }
     };
