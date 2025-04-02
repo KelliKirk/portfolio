@@ -119,6 +119,188 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Project data for Bootstrap modals - replace with your actual projects
+    const projectsDataBootstrap = {
+        projekt1: {
+            title: 'E-commerce Website',
+            image: '/api/placeholder/600/400',
+            description: 'A fully responsive e-commerce website with product catalog, shopping cart, and checkout functionality.',
+            process: 'I designed this e-commerce platform from scratch, starting with user research and wireframing. The main challenge was creating an intuitive shopping experience while maintaining fast loading times. I implemented custom filters for product searches and optimized images for quick loading.',
+            technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
+            link: '#'
+        },
+        projekt2: {
+            title: 'Personal Blog',
+            image: '/api/placeholder/600/400',
+            description: 'A minimalist blog template with content management system and comment functionality.',
+            process: 'For this personal blog project, I focused on typography and readability. I built a custom CMS that allows easy content updates without technical knowledge. The design adapts seamlessly to different screen sizes while maintaining excellent readability.',
+            technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+            link: '#'
+        },
+        projekt3: {
+            title: 'Mobile App Design',
+            image: '/api/placeholder/600/400',
+            description: 'UI/UX design for a fitness tracking mobile application with workout plans and progress tracking.',
+            process: 'This mobile app design project began with extensive user interviews to understand fitness tracking needs. I created a design system with consistent UI components and intuitive navigation patterns. The final design was tested with potential users and refined based on their feedback.',
+            technologies: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping'],
+            link: '#'
+        },
+        projekt4: {
+            title: 'Portfolio Redesign',
+            image: '/api/placeholder/600/400',
+            description: 'A complete redesign of a professional portfolio website with 3D room navigation concept.',
+            process: 'For this portfolio redesign, I wanted to create something unique and memorable. I implemented the 3D room navigation concept to provide an immersive experience. Each room represents a different section of the portfolio, with interactive elements to display projects and skills.',
+            technologies: ['HTML5', 'CSS3', 'JavaScript', 'Three.js', 'Bootstrap'],
+            link: '#'
+        }
+    };
+    
+    // Project modal functionality for Bootstrap-styled projects
+    const projectThumbnails = document.querySelectorAll('.project-thumbnail');
+    const projectModal = document.getElementById('projectModal');
+    
+    if (projectThumbnails.length > 0 && projectModal) {
+        const modalTitle = document.getElementById('projectModalLabel');
+        const modalImage = document.getElementById('modal-image');
+        const modalDescription = document.getElementById('modal-description');
+        const modalProcess = document.getElementById('modal-process');
+        const modalTechList = document.getElementById('modal-tech-list');
+        const modalLink = document.getElementById('modal-link');
+        
+        // Initialize Bootstrap modal
+        let bsProjectModal = null;
+        
+        // Function to initialize the modal
+        const initModal = () => {
+            try {
+                // Bootstrap 5 way
+                bsProjectModal = new bootstrap.Modal(projectModal);
+            } catch (e) {
+                console.log("Error with Bootstrap 5 initialization, trying jQuery:", e);
+                try {
+                    // jQuery way (Bootstrap 4 and earlier)
+                    $(projectModal).modal({
+                        backdrop: true,
+                        keyboard: true,
+                        focus: true,
+                        show: false
+                    });
+                } catch (e2) {
+                    console.log("Both modal initializations failed:", e2);
+                }
+            }
+        };
+        
+        // Initialize modal
+        initModal();
+        
+        // Add click event to project thumbnails
+        projectThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                const projectId = this.dataset.project;
+                const project = projectsDataBootstrap[projectId];
+                
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalImage.src = project.image;
+                    modalImage.alt = project.title;
+                    modalDescription.textContent = project.description;
+                    modalProcess.textContent = project.process;
+                    
+                    // Clear and populate tech list
+                    modalTechList.innerHTML = '';
+                    project.technologies.forEach(tech => {
+                        const li = document.createElement('li');
+                        li.textContent = tech;
+                        modalTechList.appendChild(li);
+                    });
+                    
+                    modalLink.href = project.link;
+                    modalLink.textContent = 'View Project';
+                    
+                    // Show modal
+                    if (bsProjectModal) {
+                        // Bootstrap 5 way
+                        bsProjectModal.show();
+                    } else {
+                        try {
+                            // jQuery way
+                            $(projectModal).modal('show');
+                        } catch (e) {
+                            // Fallback direct DOM manipulation
+                            projectModal.classList.add('show');
+                            projectModal.style.display = 'block';
+                            document.body.classList.add('modal-open');
+                            
+                            // Create backdrop if needed
+                            if (!document.querySelector('.modal-backdrop')) {
+                                const backdrop = document.createElement('div');
+                                backdrop.className = 'modal-backdrop fade show';
+                                document.body.appendChild(backdrop);
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Add hover animation
+            thumbnail.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.querySelector('.project-overlay').style.opacity = '1';
+            });
+            
+            thumbnail.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.querySelector('.project-overlay').style.opacity = '0';
+            });
+        });
+        
+        // Fix for modal closing
+        const closeModal = () => {
+            if (bsProjectModal) {
+                // Bootstrap 5 way
+                bsProjectModal.hide();
+            } else {
+                try {
+                    // jQuery way
+                    $(projectModal).modal('hide');
+                } catch (e) {
+                    // Manual DOM manipulation if all else fails
+                    projectModal.classList.remove('show');
+                    projectModal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    
+                    // Remove backdrop
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) backdrop.parentNode.removeChild(backdrop);
+                }
+            }
+        };
+        
+        // Find and bind all close triggers
+        const closeButtons = projectModal.querySelectorAll('[data-bs-dismiss="modal"], .btn-close, .btn-secondary');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeModal();
+            });
+        });
+        
+        // Close modal when clicking outside
+        projectModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Add escape key listener for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && projectModal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    }
+    
     // Bootstrap modals for About page
     // Initialize tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
