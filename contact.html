@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portfolio - Contact</title>
+    <!-- Favicon link added -->
+    <link rel="icon" href="images/logo_transparent.png" type="image/png"> 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+</head>
+<body> 
+    <div class="contact-room" id="contact-room">
+    <div class="navigation">
+         <!-- Hamburger nupp mobiilseks navigeerimiseks -->
+         <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- nav-items wrapper menüüelementide ümber -->
+        <div class="nav-items">
+            <a href="index.html" class="nav-item">HOME</a>
+            <a href="about.html" class="nav-item">ABOUT ME</a>
+            <a href="skills.html" class="nav-item">SKILLS</a>
+            <a href="projects.html" class="nav-item">PROJECTS</a>
+            <a href="contact.html" class="nav-item active">CONTACT</a>
+            <!-- Close button for mobile menu -->
+            <div class="close-menu">×</div>
+        </div>
+    </div>
+    
+        <div class="contact-container d-flex justify-content-center align-items-center">
+            <!-- Navigation arrows -->
+            <div class="navigation-arrows">
+                <a href="projects.html" class="nav-arrow nav-arrow-left" title="Go to Projects">
+                    <i class="arrow left"></i>
+                </a>
+                <a href="index.html" class="nav-arrow nav-arrow-right" title="Back to the beginning">
+                    <i class="arrow right"></i>
+                </a>
+            </div>
+            
+            <!--Contact form-->
+            <div class="glass-form-container">
+                <h2 class="contact-title">Get In Touch</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your name">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your email">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" rows="5" placeholder="Your message"></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-submit">Send</button>
+                    <div id="formSuccess" class="success-message"></div>
+                </form>
+            </div>
+        </div>
+    
+    <footer class="footer">
+        <div class="footer-title">Contact Me</div>
+        <div class="footer-content">
+            <div class="footer-item"><i class="fas fa-phone"></i> +372 51116788</div>
+            <div class="footer-item"><i class="fas fa-envelope"></i> kelli.kirk@voco.ee</div>
+        </div>
+    </footer>
+</div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
