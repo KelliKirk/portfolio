@@ -1049,6 +1049,7 @@ p, button, a, li {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .skills-board {
@@ -1061,7 +1062,9 @@ p, button, a, li {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
-    margin-top: 10px;
+    bottom: 55px;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .skills-title {
@@ -1075,8 +1078,9 @@ p, button, a, li {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
+    justify-content: center;
 }
 
 .skill-item {
@@ -1137,6 +1141,29 @@ p, button, a, li {
         margin-bottom: 20px;
     }
 }
+
+/* Add specific styles for mobile devices between 375px and 420px */
+@media (min-width: 375px) and (max-width: 420px) {
+    .skills-board {
+        width: 85%;
+        padding: 15px;
+        margin: 20px auto;
+        top: -45px;
+    }
+    
+    .skills-title {
+        font-size: 24px;
+    }
+    
+    .skill-name {
+        font-size: 16px;
+    }
+    
+    .skill-percent {
+        font-size: 14px;
+    }
+}
+
 
 /* Projects room styles */
 
