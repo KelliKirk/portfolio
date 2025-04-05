@@ -1143,27 +1143,35 @@ p, button, a, li {
 }
 
 /* Add specific styles for mobile devices between 375px and 420px */
-@media (min-width: 375px) and (max-width: 420px) {
-    .skills-board {
-        width: 85%;
-        padding: 15px;
-        margin: 20px auto;
-        top: -45px;
-    }
-    
-    .skills-title {
-        font-size: 24px;
-    }
-    
-    .skill-name {
-        font-size: 16px;
-    }
-    
-    .skill-percent {
-        font-size: 14px;
-    }
+.skills-board {
+    width: 85%;
+    padding: 15px;
+    margin: 60px auto 80px; /* Increased top margin to move away from hamburger menu */
+    position: relative;
+    top: 5; /* Remove negative top value */
+    max-height: 65vh; /* Limit maximum height */
+    overflow-y: auto; /* Add scrolling if content exceeds height */
 }
 
+.skills-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    font-size: 16px;
+}
+
+.skill-percent {
+    font-size: 14px;
+}
+
+/* Ensure navigation buttons have enough space */
+.navigation-buttons {
+    margin-top: 15px;
+    position: relative;
+    z-index: 10; /* Ensure buttons appear above other content */
+}
 
 /* Projects room styles */
 
