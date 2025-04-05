@@ -54,9 +54,14 @@
                 <div class="footer-item"><i class="fas fa-phone"></i> +372 51116788</div>
                 <div class="footer-item"><i class="fas fa-envelope"></i> kelli.kirk@voco.ee</div>
             </div>
+            <div class="copyright">© <span id="currentYear"></span> Kelli Kirk.</div>
         </footer>
-    </div>
+        </div>
 
     <script src="script.js"></script>
+    <script>
+        // Getting the automatic year for copyright line
+           document.getElementById('currentYear').textContent = new Date().getFullYear();
+       </script>
 </body>
 </html>
