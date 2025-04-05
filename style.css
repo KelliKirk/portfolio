@@ -172,14 +172,14 @@ body, html {
 .door {
     width: 350px;
     height: 650px;
-    background-color: #a9a6a6; /* Lighter gray instead of black */
+    background-color: #a9a6a6; 
     border-radius: 10px 10px 4px 4px;
     transition: all 0.3s;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
-    border: 8px solid #e0e0e0; /* Lighter border color */
+    border: 8px solid #e0e0e0; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -194,7 +194,7 @@ body, html {
     left: 25px;
     right: 25px;
     bottom: 50px;
-    background-color: rgba(90, 125, 154, 0.5); /* Accent color (Aktsentvärv) */
+    background-color: rgba(90, 125, 154, 0.5); /* Accent color */
     border: 3px solid var(--secondary-accent); /* Secondary accent color */
     border-radius: 5px;
     z-index: 0;
@@ -333,12 +333,12 @@ body, html {
     /* Improved intro text on mobile */
     .intro-text {
         max-width: 90%;
-        width: 90%; /* Ensures the width is controlled */
+        width: 90%; 
         margin: 2rem auto;
         text-align: center;
         font-size: 1.2rem;
         padding: 1.5rem;
-        box-sizing: border-box; /* Prevents padding from extending the width */
+        box-sizing: border-box; 
     }
 
     /* Hamburger menu activation */
@@ -530,7 +530,7 @@ p, button, a, li {
 .workspace-container, .skills-container, .projects-container, .contact-container {
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 160px); /* Adjust based on navbar and footer height */
+    min-height: calc(100vh - 160px); 
 }
 
 /* Clickable areas */
@@ -721,7 +721,7 @@ p, button, a, li {
     color: #f4f4f4;
 }
 
-/* Update guidance note styling to make them clickable */
+/* Guidance note styling to make them clickable */
 .guidance-note.clickable {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -739,13 +739,13 @@ p, button, a, li {
 /* Updated positions for guidance notes */
 .bookshelf-note {
     left: 15%;
-    top: 20%; /* Position below the bookshelf */
+    top: 20%; 
     transform: none;
 }
 
 .screen-note {
     left: 50%;
-    top: 30%; /* Position below the screen */
+    top: 30%; 
     transform: translateX(-50%);
 }
 
@@ -954,12 +954,7 @@ p, button, a, li {
     
     /* Fix any potential z-index issues */
     .nav-arrow {
-        z-index: 100 !important;
-    }
-}
-
-    
-    /* Make profile image smaller */
+        z-index: 100 !important; /* Make profile image smaller */
     .profile-image {
         width: 120px;
         height: 120px;
@@ -1013,6 +1008,9 @@ p, button, a, li {
         min-width: 44px;
         min-height: 44px;
     }
+    }
+}
+
     @media (min-width: 376px) and (max-width: 420px) {
         .nav-arrow {
             width: 60px !important;
@@ -1142,15 +1140,15 @@ p, button, a, li {
     }
 }
 
-/* Add specific styles for mobile devices between 375px and 420px */
+/* Specific styles for mobile devices between 375px and 420px */
 .skills-board {
     width: 85%;
     padding: 15px;
-    margin: 60px auto 80px; /* Increased top margin to move away from hamburger menu */
+    margin: 60px auto 80px; 
     position: relative;
-    top: 5; /* Remove negative top value */
-    max-height: 65vh; /* Limit maximum height */
-    overflow-y: auto; /* Add scrolling if content exceeds height */
+    top: 5; 
+    max-height: 65vh; 
+    overflow-y: auto; 
 }
 
 .skills-title {
@@ -1166,11 +1164,10 @@ p, button, a, li {
     font-size: 14px;
 }
 
-/* Ensure navigation buttons have enough space */
 .navigation-buttons {
     margin-top: 15px;
     position: relative;
-    z-index: 10; /* Ensure buttons appear above other content */
+    z-index: 10; 
 }
 
 /* Projects room styles */
@@ -1219,12 +1216,6 @@ p, button, a, li {
     margin: 40px auto;
 }
 
-@media (max-width: 768px) {
-    .projects-wall {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Project Thumbnails */
 .project-thumbnail {
     position: relative;
@@ -1257,6 +1248,119 @@ p, button, a, li {
     font-weight: 600;
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+/* Responsive styles for tablets (768px) */
+@media (max-width: 768px) and (min-width: 577px) {
+    .projects-wall {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 90%;
+        max-width: 650px;
+        margin: 0 auto;
+        padding-top: 60px;
+        padding-bottom: 70px;
+        position: relative;
+    }
+    
+    .project-thumbnail {
+        border: 5px solid #333;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        height: auto;
+        aspect-ratio: 4/3;
+        overflow: hidden; 
+        display: block; 
+        line-height: 0; 
+    }
+    
+    .project-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block; 
+        vertical-align: bottom; 
+    }
+    
+    .project-overlay {
+        opacity: 0;
+        font-size: 14px;
+        padding: 8px;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-thumbnail:hover .project-overlay {
+        opacity: 1;
+    }
+}
+
+/* Responsive styles for small tablets and large phones (576px) */
+@media (max-width: 576px) and (min-width: 421px) {
+    .projects-wall {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding-top: 70px;
+        padding-bottom: 80px;
+        position: relative;
+    }
+    
+    .project-thumbnail {
+        border: 4px solid #333;
+        box-shadow: 0 5px 13px rgba(0, 0, 0, 0.28);
+        height: auto;
+        aspect-ratio: 4/3;
+    }
+    
+    .project-overlay {
+        opacity: 0;
+        font-size: 12px;
+        padding: 6px;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-thumbnail:hover .project-overlay {
+        opacity: 1;
+    }
+}
+
+/* Updated styles for small mobile screens (375px-420px) - slightly bigger thumbnails */
+@media (min-width: 375px) and (max-width: 420px) {
+    .projects-wall {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px; 
+        width: 92%;  /* Slightly wider to make thumbnails bigger */
+        max-width: 340px;  /* Increased from 300px */
+        margin: 0 auto;
+        padding-top: 80px; 
+        padding-bottom: 90px; 
+        position: relative;
+        top: 10px; 
+    }
+    
+    .project-thumbnail {
+        border: 4px solid #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        height: auto; 
+        aspect-ratio: 4/3;
+    }
+    
+    .project-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .project-overlay {
+        opacity: 1;
+        font-size: 11px;  /* Slightly larger font */
+        padding: 5px;     /* Slightly more padding */
+        background-color: rgba(0, 0, 0, 0.75);
+    }
 }
 
 /* Contact room styling */
@@ -1381,28 +1485,131 @@ p, button, a, li {
 }
 
 /* Responsive adjustments */
+/* Tablets (768px) */
 @media (max-width: 768px) {
     .glass-form-container {
-        padding: 1.5rem;
-        width: 90%;
+        padding: 1.75rem;
+        width: 85%;
+        max-width: 500px;
+        margin: 0 auto; 
+        transform: scale(0.9);
+        top: -90px;
     }
     
     .contact-title {
         font-size: 28px;
+        margin-bottom: 0.6rem;
+        margin-top: 0.5rem; 
+        padding-top: 0.25rem;
+    }
+    
+    .contact-form .form-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.7rem;
+    }
+
+    .btn-submit {
+        width: 100;
+        max-width: 200px;
+        padding: 0.6rem 0.9rem;
+        font-size: 20px;
+        margin-top: 1.5rem; 
+        height: auto;
     }
 }
 
-@media (max-width: 480px) {
+/* Small tablets (576px) */
+@media (max-width: 576px) {
     .glass-form-container {
-        padding: 1rem;
-        width: 95%;
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .contact-title {
+        font-size: 26px;
+        margin-bottom: 1.2rem;
+    }
+    
+    .btn-submit {
+        max-width: 180px;
+    }
+}
+
+/* Large phones (420px) */
+@media (max-width: 420px) {
+    .glass-form-container {
+        padding: 1.25rem;
+        width: 92%;
+        border-radius: 12px;
     }
     
     .contact-title {
         font-size: 24px;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form label {
+        font-size: 15px;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.65rem;
+        border-radius: 6px;
     }
     
     .btn-submit {
-        max-width: 100%;
+        max-width: 160px;
+        padding: 0.7rem 1.25rem;
+    }
+}
+
+/* Small phones (375px) */
+@media (max-width: 375px) {
+    .glass-form-container { 
+    padding: 0.75rem;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 8px;
+    max-width: 320px; 
+    transform: scale(0.9);
+    top: -40px;
+    }
+    
+    .contact-title {
+        font-size: 18px;
+        margin-bottom: 0.6rem;
+        margin-top: 0.5rem; 
+        padding-top: 0.25rem;
+    }
+    
+    .contact-form .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form label {
+        margin-bottom: 0.4rem;
+        font-size: 14px;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.6rem;
+    }
+    
+    .error-message {
+        font-size: 12px;
+        bottom: -18px;
+    }
+    
+    .btn-submit {
+        max-width: 110px;
+        padding: 0.45rem 0.8rem;
+        font-size: 13px;
+        margin-top: 0.85rem; 
+        height: auto;
     }
 }
