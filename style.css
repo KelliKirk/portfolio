@@ -1175,7 +1175,7 @@ p, button, a, li {
         max-width: 800px;
         width: 80%;
         padding: 25px;
-        margin: 20px auto 60px;
+        margin: -30px auto 60px;
         max-height: 65vh;
     }
     
