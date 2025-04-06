@@ -1127,7 +1127,7 @@ p, button, a, li {
 /* Large desktop screens */
 @media (min-width: 1601px) {
     .skills-board {
-        max-width: 1100px;
+        max-width: 1000px;
         width: 70%;
     }
     
@@ -1144,6 +1144,7 @@ p, button, a, li {
         width: 75%;
         padding: 25px;
         margin: 40px auto;
+        top: -30px;
     }
     
     .skills-grid {
