@@ -1159,9 +1159,8 @@ p, button, a, li {
         max-width: 900px;
         width: 75%;
         padding: 25px;
-        margin: 20px auto 70px;
+        margin: 20px auto 60px;
         max-height: 70vh;
-        top: -30px;
     }
     
     .skills-grid {
