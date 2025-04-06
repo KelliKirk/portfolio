@@ -1172,8 +1172,8 @@ p, button, a, li {
 /* Standard laptops */
 @media (min-width: 1025px) and (max-width: 1366px) {
     .skills-board {
-        max-width: 800px;
-        width: 75%;
+        max-width: 700px;
+        width: 80%;
         padding: 25px;
         margin: -30px auto 60px;
         max-height: 65vh;
