@@ -1173,7 +1173,7 @@ p, button, a, li {
 @media (min-width: 1025px) and (max-width: 1366px) {
     .skills-board {
         max-width: 800px;
-        width: 80%;
+        width: 75%;
         padding: 25px;
         margin: -30px auto 60px;
         max-height: 65vh;
