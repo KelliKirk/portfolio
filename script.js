@@ -338,13 +338,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Make guidance notes initially visible, then fade after 3 seconds
+    // Make guidance notes initially visible, then fade after 6 seconds
     guidanceNotes.forEach(note => {
         note.classList.add('visible');
         
         setTimeout(() => {
             note.classList.remove('visible');
-        }, 3000);
+        }, 6000);
     });
     
     // Fix modal closing issue
