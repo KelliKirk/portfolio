@@ -1056,11 +1056,10 @@ p, button, a, li {
     padding: 30px;
     max-width: 900px;
     width: 90%;
-    margin: 50px auto;
+    margin: 20px auto;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
-    bottom: 55px;
     overflow-x: hidden;
     box-sizing: border-box;
 }
@@ -1124,23 +1123,21 @@ p, button, a, li {
     }
 }
 
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    
+/* Laptop screens */
+@media (min-width: 768px) and (max-width: 1366px) {
     .skills-board {
-        padding: 20px;
         margin: 30px auto;
+        max-height: 80vh;
+        overflow-y: auto;
     }
     
-    .skills-title {
-        font-size: 28px;
-        margin-bottom: 20px;
+    .skills-grid {
+        gap: 20px;
     }
 }
 
 /* Specific styles for mobile devices between 375px and 420px */
+@media (max-width: 420px) and (min-width: 375px) {
 .skills-board {
     width: 85%;
     padding: 15px;
@@ -1168,6 +1165,7 @@ p, button, a, li {
     margin-top: 15px;
     position: relative;
     z-index: 10; 
+}
 }
 
 /* Projects room styles */
@@ -1375,6 +1373,8 @@ p, button, a, li {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; 
+    padding: 40px 0; 
 }
 
 
@@ -1485,7 +1485,22 @@ p, button, a, li {
 }
 
 /* Responsive adjustments */
-/* Tablets (768px) */
+
+/* Specific media query for laptops */
+/* Laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .glass-form-container {
+        margin: 60px auto;
+        transform: none;
+        top: 0;
+    }
+    
+    .contact-room {
+        justify-content: center; /* Center the form vertically */
+    }
+}
+
+/* Tablets  */
 @media (max-width: 768px) {
     .glass-form-container {
         padding: 1.75rem;
