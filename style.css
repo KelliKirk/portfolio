@@ -1579,7 +1579,7 @@ p, button, a, li {
     .glass-form-container {
         margin: 60px auto;
         transform: none;
-        top: 0;
+        top: -20px;
     }
     
     .contact-room {
