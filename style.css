@@ -20,26 +20,26 @@ body, html {
 }
 
 /* Navigation - Improved spacing and positioning */
-    .navigation {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        background: rgba(205, 205, 205, 0.5);
-        border-top: 2px solid #b0b0b0;
-        border-bottom: 2px solid #b0b0b0;
-        top: -5px; 
-        position: absolute; 
-        z-index: 100; 
+.navigation {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: rgba(205, 205, 205, 0.5);
+    border-top: 2px solid #b0b0b0;
+    border-bottom: 2px solid #b0b0b0;
+    top: -5px; 
+    position: absolute; 
+    z-index: 100; 
 }
 
 .nav-items {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    max-width: 1200px; /* Adjust based on your site width */
+    max-width: 1200px;
     position: relative;
 }
 
@@ -106,51 +106,51 @@ body, html {
     right: 0;
     bottom: 0;
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23333333' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-    opacity: 0.3;
-    z-index: 0;
-    pointer-events: none;
+opacity: 0.3;
+z-index: 0;
+pointer-events: none;
 }
 
 /* Ensure text appears above the overlay */
 .nav-item span {
-    position: relative;
-    z-index: 1;
+position: relative;
+z-index: 1;
 }
 
 /* Hamburger menu for mobile */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 10;
+display: none;
+flex-direction: column;
+justify-content: space-between;
+width: 30px;
+height: 21px;
+cursor: pointer;
+position: absolute;
+top: 1.5rem;
+right: 1.5rem;
+z-index: 10;
 }
 
-.hamburger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: var(--text-color);
-    border-radius: 3px;
-    transition: all 0.3s ease;
+.hamburger .line {
+display: block;
+height: 3px;
+width: 100%;
+background-color: var(--text-color);
+border-radius: 3px;
+transition: all 0.3s ease;
 }
 
 /* Hamburger animation when active */
-.hamburger.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+.hamburger.active .line:nth-child(1) {
+transform: translateY(9px) rotate(45deg);
 }
 
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
+.hamburger.active .line:nth-child(2) {
+opacity: 0;
 }
 
-.hamburger.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+.hamburger.active .line:nth-child(3) {
+transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Entrance Room - Background effect */
@@ -189,6 +189,7 @@ body, html {
     padding: 0 2rem;
     flex: 1;
     box-sizing: border-box;
+    margin-top: 80px;
 }
 
 /* Improved intro text - Centered with background */
@@ -295,17 +296,6 @@ body, html {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
-/* Close button for mobile menu */
-.close-menu {
-    display: none;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
 /* Footer styles to match navbar */
 .footer {
     width: 100%;
@@ -376,49 +366,54 @@ body, html {
 }
 
 @media (max-width: 768px) {
-    /* Improved intro text on mobile */
-    .intro-text {
-        max-width: 90%;
-        width: 90%; 
-        margin: 2rem auto;
-        text-align: center;
-        font-size: 1.2rem;
-        padding: 1.5rem;
-        box-sizing: border-box; 
-    }
-
-    /* Hamburger menu activation */
     .hamburger {
         display: flex;
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
     }
     
-    /* Updated mobile menu styling to be lighter */
     .nav-items {
         position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
+        top: 4rem;
+        right: -250px;
+        width: 250px;
+        height: auto;
         background-color: var(--menu-bg);
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: right 0.5s ease;
+        align-items: stretch;
+        transition: right 0.3s ease;
         z-index: 9;
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
     }
     
     .nav-items.active {
-        right: 0;
+        right: 1.5rem;
     }
     
     .nav-item {
-        margin: 1.5rem 0;
-        font-size: 1.3rem;
+        margin: 0;
+        padding: 1rem 0;
+        font-size: 1.2rem;
         color: var(--text-color);
+        border: none;
+        border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+        background: none;
+        text-align: center;
+        justify-content: center;
     }
-    
-    .close-menu {
-        display: block;
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-item:hover {
+        transform: none;
+        background-color: rgba(230, 230, 230, 0.9);
+    }
+
+    .nav-item.active {
+        background-color: rgba(220, 220, 220, 0.9);
     }
     
     .door {
@@ -450,6 +445,10 @@ body, html {
     
     .door-logo {
         width: 120px;
+    }
+    
+    .nav-items {
+        width: 200px; /* Slightly narrower on very small screens */
     }
 }
 
@@ -574,9 +573,10 @@ p, button, a, li {
 
 /* Page containers */
 .workspace-container, .skills-container, .projects-container, .contact-container {
+    margin-top: 80px;
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 160px); 
+    min-height: calc(100vh - 160px);
 }
 
 /* Clickable areas */

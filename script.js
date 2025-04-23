@@ -1,35 +1,68 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Hamburger menu functionality
-    const hamburger = document.querySelector('.hamburger');
-    const navItemsContainer = document.querySelector('.nav-items');
-    
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            // Toggle active class on nav-items element
-            navItemsContainer.classList.toggle('active');
-            // Toggle active class on hamburger for animation
-            this.classList.toggle('active');
+    // Navigation functionality
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    // Add click event to all nav items to close menu when clicked
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                navbarToggler.click();
+            }
         });
-    }
-    
-    // Close menu when clicking on menu item
-    const navLinks = document.querySelectorAll('.nav-items .nav-item');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navItemsContainer.classList.remove('active');
-            if (hamburger) hamburger.classList.remove('active');
+
+        // Add hover animation
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = '';
         });
     });
-    
-    // Close button for mobile menu
-    const closeMenu = document.querySelector('.close-menu');
-    if (closeMenu) {
-        closeMenu.addEventListener('click', function() {
-            navItemsContainer.classList.remove('active');
-            if (hamburger) hamburger.classList.remove('active');
-        });
-    }
-    
+
+    // Update active states for navigation
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navItems.forEach(item => {
+        if (item.getAttribute('href') === currentPage) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+      // Hamburger menu functionality
+      const hamburger = document.querySelector('.hamburger');
+      const navItemsContainer = document.querySelector('.nav-items');
+      
+      if (hamburger) {
+          hamburger.addEventListener('click', function() {
+              // Toggle active class on nav-items element
+              navItemsContainer.classList.toggle('active');
+              // Toggle active class on hamburger for animation
+              this.classList.toggle('active');
+          });
+      }
+      
+      // Close menu when clicking on menu item
+      const navLinks = document.querySelectorAll('.nav-items .nav-item');
+      navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+              navItemsContainer.classList.remove('active');
+              if (hamburger) hamburger.classList.remove('active');
+          });
+      });
+      
+      // Close button for mobile menu
+      const closeMenu = document.querySelector('.close-menu');
+      if (closeMenu) {
+          closeMenu.addEventListener('click', function() {
+              navItemsContainer.classList.remove('active');
+              if (hamburger) hamburger.classList.remove('active');
+          });
+      }
+
     // Project modal elements
     const projectFrames = document.querySelectorAll('.project-frame');
     const modal = document.getElementById('project-modal');
@@ -344,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
             note.classList.remove('visible');
-        }, 6000);
+        }, 10000);
     });
     
     // Fix modal closing issue
@@ -537,19 +570,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Navigation hover animation
-    const navItems = document.querySelectorAll('.nav-item');
-    
-    navItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
-    });
-    
     // Skills progress bar animation
     const animateSkills = () => {
         const progressBars = document.querySelectorAll('.progress-bar');
@@ -591,89 +611,87 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Contact form validation and mailto functionality
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Reset errors
-        document.getElementById('nameError').textContent = '';
-        document.getElementById('emailError').textContent = '';
-        document.getElementById('messageError').textContent = '';
-        
-        // Get form values
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        
-        // Validate form
-        let isValid = true;
-        
-        if (!name) {
-            document.getElementById('nameError').textContent = 'Please enter your name';
-            document.getElementById('name').classList.add('is-invalid');
-            isValid = false;
-        } else {
-            document.getElementById('name').classList.remove('is-invalid');
-        }
-        
-        if (!email) {
-            document.getElementById('emailError').textContent = 'Please enter your email';
-            document.getElementById('email').classList.add('is-invalid');
-            isValid = false;
-        } else if (!validateEmail(email)) {
-            document.getElementById('emailError').textContent = 'Please enter a valid email address';
-            document.getElementById('email').classList.add('is-invalid');
-            isValid = false;
-        } else {
-            document.getElementById('email').classList.remove('is-invalid');
-        }
-        
-        if (!message) {
-            document.getElementById('messageError').textContent = 'Please enter your message';
-            document.getElementById('message').classList.add('is-invalid');
-            isValid = false;
-        } else {
-            document.getElementById('message').classList.remove('is-invalid');
-        }
-        
-        // If form is valid, create mailto link
-        if (isValid) {
-            // Format the message for email
-            const formattedMessage = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Create mailto link
-            const mailtoLink = `mailto:kelli.kirk@voco.ee?subject=Contact Form from ${name}&body=${formattedMessage}`;
+            // Reset errors
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('messageError').textContent = '';
             
-            // Open email client
-            window.location.href = mailtoLink;
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
             
-            // Show success message
-            document.getElementById('formSuccess').textContent = 'Opening your email client to send the message.';
+            // Validate form
+            let isValid = true;
             
-            // Reset form
-            contactForm.reset();
-        }
-    });
-    
-    // Email validation function
-    function validateEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
-    
-    // Clear error message when input changes
-    const formInputs = contactForm.querySelectorAll('input, textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('input', function() {
-            if (this.value.trim() !== '') {
-                this.classList.remove('is-invalid');
-                const errorId = this.id + 'Error';
-                document.getElementById(errorId).textContent = '';
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Please enter your name';
+                document.getElementById('name').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('name').classList.remove('is-invalid');
+            }
+            
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Please enter your email';
+                document.getElementById('email').classList.add('is-invalid');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                document.getElementById('email').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('email').classList.remove('is-invalid');
+            }
+            
+            if (!message) {
+                document.getElementById('messageError').textContent = 'Please enter your message';
+                document.getElementById('message').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('message').classList.remove('is-invalid');
+            }
+            
+            // If form is valid, create mailto link
+            if (isValid) {
+                // Format the message for email
+                const formattedMessage = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+                
+                // Create mailto link
+                const mailtoLink = `mailto:kelli.kirk@voco.ee?subject=Contact Form from ${name}&body=${formattedMessage}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                document.getElementById('formSuccess').textContent = 'Opening your email client to send the message.';
+                
+                // Reset form
+                contactForm.reset();
             }
         });
-    });
-}
-
-
+        
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        
+        // Clear error message when input changes
+        const formInputs = contactForm.querySelectorAll('input, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.remove('is-invalid');
+                    const errorId = this.id + 'Error';
+                    document.getElementById(errorId).textContent = '';
+                }
+            });
+        });
+    }
 });
