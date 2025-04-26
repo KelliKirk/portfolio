@@ -613,85 +613,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form validation and mailto functionality
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        // Initialize EmailJS
+        emailjs.init('9ROJi4Dp3erAuhnos'); // Your public key
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Reset errors
-            document.getElementById('nameError').textContent = '';
-            document.getElementById('emailError').textContent = '';
-            document.getElementById('messageError').textContent = '';
-            
+
+            const btn = document.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
             // Get form values
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            // Validate form
-            let isValid = true;
-            
-            if (!name) {
-                document.getElementById('nameError').textContent = 'Please enter your name';
-                document.getElementById('name').classList.add('is-invalid');
-                isValid = false;
-            } else {
-                document.getElementById('name').classList.remove('is-invalid');
-            }
-            
-            if (!email) {
-                document.getElementById('emailError').textContent = 'Please enter your email';
-                document.getElementById('email').classList.add('is-invalid');
-                isValid = false;
-            } else if (!validateEmail(email)) {
-                document.getElementById('emailError').textContent = 'Please enter a valid email address';
-                document.getElementById('email').classList.add('is-invalid');
-                isValid = false;
-            } else {
-                document.getElementById('email').classList.remove('is-invalid');
-            }
-            
-            if (!message) {
-                document.getElementById('messageError').textContent = 'Please enter your message';
-                document.getElementById('message').classList.add('is-invalid');
-                isValid = false;
-            } else {
-                document.getElementById('message').classList.remove('is-invalid');
-            }
-            
-            // If form is valid, create mailto link
-            if (isValid) {
-                // Format the message for email
-                const formattedMessage = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-                
-                // Create mailto link
-                const mailtoLink = `mailto:kelli.kirk@voco.ee?subject=Contact Form from ${name}&body=${formattedMessage}`;
-                
-                // Open email client
-                window.location.href = mailtoLink;
-                
-                // Show success message
-                document.getElementById('formSuccess').textContent = 'Opening your email client to send the message.';
-                
-                // Reset form
-                contactForm.reset();
-            }
-        });
-        
-        // Email validation function
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-        
-        // Clear error message when input changes
-        const formInputs = contactForm.querySelectorAll('input, textarea');
-        formInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                if (this.value.trim() !== '') {
-                    this.classList.remove('is-invalid');
-                    const errorId = this.id + 'Error';
-                    document.getElementById(errorId).textContent = '';
-                }
-            });
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Prepare the email template parameters
+            const templateParams = {
+                to_name: 'Kelli Kirk',
+                from_name: name,
+                from_email: email,
+                message: message,
+                reply_to: email
+            };
+
+            emailjs.send('service_5hvgq37', 'template_0g9ky87', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('error-message').style.display = 'none';
+                    contactForm.reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    document.getElementById('error-message').style.display = 'block';
+                    document.getElementById('success-message').style.display = 'none';
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Send Message';
+                });
         });
     }
 });
