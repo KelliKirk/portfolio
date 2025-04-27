@@ -306,6 +306,7 @@ transform: translateY(-9px) rotate(-45deg);
     align-items: center;
     position: relative;
     z-index: 2;
+    margin-top: auto;
 }
 
 .footer-title {
@@ -331,21 +332,28 @@ transform: translateY(-9px) rotate(-45deg);
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0;
 }
-
 .footer-item {
-    margin: 0.5rem 0;
+    margin: 0;
     color: var(--text-color);
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: none;
+}
+.footer-item:hover,
+.footer-item a:hover {
+    color: inherit;
+    transform: none;
+    text-decoration: none;
+    cursor: default;
+}
+.footer-item a {
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
 }
 
-.footer-item:hover {
-    color: var(--primary-accent);
-    transform: translateY(-3px);
-}
-
-.copyright {
+.copyright, .footer-credit {
     margin-top: 10px;
     font-size: 0.9em;
     text-align: center;
@@ -576,7 +584,9 @@ p, button, a, li {
     margin-top: 80px;
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 160px);
+    flex: 1; /* Add this to take up available space */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Clickable areas */
@@ -1093,8 +1103,8 @@ p, button, a, li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px 0 60px;
+    justify-content: flex-start;
+    padding: 20px 0 0;
     overflow-x: hidden;
 }
 
@@ -1112,6 +1122,7 @@ p, button, a, li {
     max-width: 600px;
     max-height: 80vh; 
     overflow-y: auto; 
+    bottom: 50px;
 }
 
 .skills-title {
@@ -1506,8 +1517,9 @@ p, button, a, li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
-    padding: 40px 0; 
+    justify-content: flex-start; 
+    padding: 20px 0 0; 
+    overflow-x: hidden;
 }
 
 
@@ -1525,7 +1537,7 @@ p, button, a, li {
     z-index: 1;
     position: relative;
     margin: auto;
-    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .contact-title {
