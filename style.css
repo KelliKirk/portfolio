@@ -1410,6 +1410,34 @@ p, button, a, li {
     transition: opacity 0.3s ease;
 }
 
+#additional-images .thumbnail {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#additional-images .thumbnail:hover {
+    transform: scale(1.05);
+    border-color: #5a7d9a;
+}
+
+/* Highlight for active thumbnail */
+#additional-images .active-thumbnail {
+    border-color: #5a7d9a;
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.5);
+}
+
+/* Make sure the modal accommodates additional content */
+.modal-lg {
+    max-width: 800px;
+}
+
+/* Style for the Figma button */
+#modal-figma-link {
+    margin-right: 5px;
+}
+
 /* Responsive styles for tablets (768px) */
 @media (max-width: 768px) and (min-width: 577px) {
     .projects-wall {
@@ -1450,6 +1478,36 @@ p, button, a, li {
     
     .project-thumbnail:hover .project-overlay {
         opacity: 1;
+    }
+
+     /* Increase tap target size on mobile */
+    #additional-images .thumbnail {
+        min-height: 80px;
+        margin-bottom: 10px;
+    }
+    
+    /* Ensure buttons have enough space */
+    .modal-footer .btn {
+        margin-bottom: 8px;
+        padding: 8px 16px;
+    }
+    
+    /* Make the modal take more screen space on small devices */
+    .modal-dialog.modal-lg {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+    
+    /* Ensure proper spacing between stacked elements */
+    .modal-body .row > [class*="col-"] {
+        margin-bottom: 15px;
+    }
+}
+
+@media (hover: none) {
+    /* Provide visual cue that thumbnails are interactive */
+    #additional-images .thumbnail {
+        border-color: #dee2e6;
     }
 }
 
