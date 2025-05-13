@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     title: 'Hackathon Grading App Design',
     image: 'images/gradingapp.jpg',
     description: 'A design for the hackathon scoring app',
-    process: 'This app was created as a group project for the hackathon scoring in my school. I was responsible for the prototype, design and front-end coding. You can view the complete design in Figma to see all screens and interaction flows.',
+    process: 'This app was created as part of a group project for a school hackathon scoring system. I was responsible for the prototype, UI/UX design, and front-end development. Throughout the process, we explored several design iterations before finalizing the user flow and visual direction. These early concepts played a key role in shaping the final product. You can view the complete design(s) in Figma link below.',
     technologies: ['React', 'Node.js', 'Figma', 'Prototyping', 'HTML5', 'CSS3'],
     link: 'https://hindamine.ita.voco.ee/',
     figmaLink: 'https://www.figma.com/design/svKRdvXzMuxOq4owvzACBW/K%C3%BCberk%C3%BCpsetus?node-id=69-2&t=z5SY3MiH0gTtAaUw-1',

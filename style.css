@@ -156,7 +156,7 @@ transform: translateY(-9px) rotate(-45deg);
 /* Entrance Room - Background effect */
 #entrance-room{
     background-color: var(--secondary-color);
-    background-image: url('images/wall1.jpg');
+    background-image: url('images/wall1.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -529,7 +529,7 @@ p, button, a, li {
 .navigation-arrows {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 95%;
     pointer-events: none;
     z-index: 2;
 }
@@ -620,8 +620,8 @@ p, button, a, li {
 .nav-arrow {
     position: absolute;
     top: 90%;
-    width: 233px !important;
-    height: 100px !important;
+    width: 200px !important;
+    height: 80px !important;
     background-color: rgba(217, 217, 217, 0.50) !important;
     border-radius: 10px;
     display: flex;
@@ -794,8 +794,8 @@ p, button, a, li {
 
 /* Updated positions for guidance notes */
 .bookshelf-note {
-    left: 15%;
-    top: 20%; 
+    left: 5%;
+    bottom: 60%; 
     transform: none;
 }
 
