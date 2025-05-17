@@ -185,27 +185,14 @@ transform: translateY(-9px) rotate(-45deg);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 0 2rem;
     flex: 1;
     box-sizing: border-box;
-    margin-top: 80px;
+    margin-top: 200px;
 }
 
-/* Improved intro text - Centered with background */
-.intro-text {
-    text-align: center;
-    max-width: 100%;
-    margin: 2rem auto;
-    font-size: 1.5rem;
-    color: var(--text-color);
-    padding: 2rem;
-    border-radius: 8px;
-    text-shadow: 0 0 10px rgb(248, 245, 245);
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 /* Door container for centering */
 .door-container {
@@ -359,7 +346,9 @@ transform: translateY(-9px) rotate(-45deg);
     text-align: center;
 }
 
-/* Responsive Styles - Improved for mobile */
+/* Responsive Styles*/
+
+
 @media (max-width: 992px) {
     .door {
         width: 300px;
