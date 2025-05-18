@@ -32,36 +32,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-      // Hamburger menu functionality
-      const hamburger = document.querySelector('.hamburger');
-      const navItemsContainer = document.querySelector('.nav-items');
-      
-      if (hamburger) {
-          hamburger.addEventListener('click', function() {
-              // Toggle active class on nav-items element
-              navItemsContainer.classList.toggle('active');
-              // Toggle active class on hamburger for animation
-              this.classList.toggle('active');
-          });
-      }
-      
-      // Close menu when clicking on menu item
-      const navLinks = document.querySelectorAll('.nav-items .nav-item');
-      navLinks.forEach(link => {
-          link.addEventListener('click', function() {
-              navItemsContainer.classList.remove('active');
-              if (hamburger) hamburger.classList.remove('active');
-          });
-      });
-      
-      // Close button for mobile menu
-      const closeMenu = document.querySelector('.close-menu');
-      if (closeMenu) {
-          closeMenu.addEventListener('click', function() {
-              navItemsContainer.classList.remove('active');
-              if (hamburger) hamburger.classList.remove('active');
-          });
-      }
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navItemsContainer = document.querySelector('.nav-items');
+    
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            // Toggle active class on nav-items element
+            navItemsContainer.classList.toggle('active');
+            // Toggle active class on hamburger for animation
+            this.classList.toggle('active');
+        });
+    }
+    
+    // Close menu when clicking on menu item
+    const navLinks = document.querySelectorAll('.nav-items .nav-item');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navItemsContainer.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+        });
+    });
+    
+    // Close button for mobile menu
+    const closeMenu = document.querySelector('.close-menu');
+    if (closeMenu) {
+        closeMenu.addEventListener('click', function() {
+            navItemsContainer.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+        });
+    }
 
     // Project modal elements
     const projectFrames = document.querySelectorAll('.project-frame');
@@ -163,24 +163,24 @@ document.addEventListener('DOMContentLoaded', function() {
             link: 'https://vso24kirk.ita.voco.ee/veebiarendus/L6puprojekt/ollie_fansite/'
         },
         projekt2: {
-    title: 'Hackathon Grading App Design',
-    image: 'images/gradingapp.jpg',
-    description: 'A design for the hackathon scoring app',
-    process: 'This app was created as part of a group project for a school hackathon scoring system. I was responsible for the prototype, UI/UX design, and front-end development. Throughout the process, we explored several design iterations before finalizing the user flow and visual direction. These early concepts played a key role in shaping the final product. You can view the complete design(s) in Figma link below.',
-    technologies: ['React', 'Node.js', 'Figma', 'Prototyping', 'HTML5', 'CSS3'],
-    link: 'https://hindamine.ita.voco.ee/',
-    figmaLink: 'https://www.figma.com/design/svKRdvXzMuxOq4owvzACBW/K%C3%BCberk%C3%BCpsetus?node-id=69-2&t=z5SY3MiH0gTtAaUw-1',
-    additionalImages: [
-        {
-            src: 'images/gradingandteams.png',
-            alt: 'Grading teams interface'
+            title: 'Hackathon Grading App Design',
+            image: 'images/gradingapp.jpg',
+            description: 'A design for the hackathon scoring app',
+            process: 'This app was created as part of a group project for a school hackathon scoring system. I was responsible for the prototype, UI/UX design, and front-end development. Throughout the process, we explored several design iterations before finalizing the user flow and visual direction. These early concepts played a key role in shaping the final product. You can view the complete design(s) in Figma link below.',
+            technologies: ['React', 'Node.js', 'Figma', 'Prototyping', 'HTML5', 'CSS3'],
+            link: 'https://hindamine.ita.voco.ee/',
+            figmaLink: 'https://www.figma.com/design/svKRdvXzMuxOq4owvzACBW/K%C3%BCberk%C3%BCpsetus?node-id=69-2&t=z5SY3MiH0gTtAaUw-1',
+            additionalImages: [
+                {
+                    src: 'images/gradingandteams.png',
+                    alt: 'Grading teams interface'
+                },
+                {
+                    src: 'images/resultspage.png',
+                    alt: 'Results page interface'
+                }
+            ]
         },
-        {
-            src: 'images/resultspage.png',
-            alt: 'Results page interface'
-        }
-    ]
-},
         projekt3: {
             title: 'Memory Game',
             image: 'images/memorygame.jpg',
@@ -239,116 +239,116 @@ document.addEventListener('DOMContentLoaded', function() {
         initModal();
         
         // Add click event to project thumbnails
-   projectThumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', function() {
-        const projectId = this.dataset.project;
-        const project = projectsDataBootstrap[projectId];
-        
-        if (project) {
-            modalTitle.textContent = project.title;
-            modalImage.src = project.image;
-            modalImage.alt = project.title;
-            modalDescription.textContent = project.description;
-            modalProcess.textContent = project.process;
-            
-            // Clear and populate tech list
-            modalTechList.innerHTML = '';
-            project.technologies.forEach(tech => {
-                const li = document.createElement('li');
-                li.textContent = tech;
-                modalTechList.appendChild(li);
-            });
-            
-            modalLink.href = project.link;
-            modalLink.textContent = 'View Project';
-            
-            // Handle Figma link if available
-            const modalFigmaLink = document.getElementById('modal-figma-link');
-            if (project.figmaLink && modalFigmaLink) {
-                modalFigmaLink.href = project.figmaLink;
-                modalFigmaLink.style.display = 'inline-block';
-            } else if (modalFigmaLink) {
-                modalFigmaLink.style.display = 'none';
-            }
-            
-            // Handle additional images if available
-            const additionalImagesContainer = document.getElementById('additional-images');
-           if (additionalImagesContainer) {
-    additionalImagesContainer.innerHTML = '';
-    
-    if (project.additionalImages && project.additionalImages.length > 0) {
-        project.additionalImages.forEach(img => {
-            // Use col-6 for smaller screens (two per row) and col-12 for very small screens (one per row)
-            const imgCol = document.createElement('div');
-            imgCol.className = 'col-6 col-sm-6 mt-2';
-            
-            const imgElement = document.createElement('img');
-            imgElement.src = img.src;
-            imgElement.alt = img.alt;
-            imgElement.className = 'img-fluid thumbnail';
-            
-            // Add aria-label for accessibility
-            imgElement.setAttribute('aria-label', 'Click to enlarge ' + img.alt);
-            
-            // Make thumbnails clickable to enlarge with touch-friendly interaction
-            imgElement.addEventListener('click', function() {
-                // Update main image
-                modalImage.src = this.src;
-                modalImage.alt = this.alt;
+        projectThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                const projectId = this.dataset.project;
+                const project = projectsDataBootstrap[projectId];
                 
-                // Visual feedback for selection - highlight active thumbnail
-                const allThumbnails = additionalImagesContainer.querySelectorAll('.thumbnail');
-                allThumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
-                this.classList.add('active-thumbnail');
-                
-                // Scroll to the top of modal on mobile to see the enlarged image
-                if (window.innerWidth < 768) {
-                    modalImage.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-            
-            imgCol.appendChild(imgElement);
-            additionalImagesContainer.appendChild(imgCol);
-        });
-    }
-}
-            
-            // Show modal
-            if (bsProjectModal) {
-                // Bootstrap 5 way
-                bsProjectModal.show();
-            } else {
-                try {
-                    // jQuery way
-                    $(projectModal).modal('show');
-                } catch (e) {
-                    // Fallback direct DOM manipulation
-                    projectModal.classList.add('show');
-                    projectModal.style.display = 'block';
-                    document.body.classList.add('modal-open');
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalImage.src = project.image;
+                    modalImage.alt = project.title;
+                    modalDescription.textContent = project.description;
+                    modalProcess.textContent = project.process;
                     
-                    // Create backdrop if needed
-                    if (!document.querySelector('.modal-backdrop')) {
-                        const backdrop = document.createElement('div');
-                        backdrop.className = 'modal-backdrop fade show';
-                        document.body.appendChild(backdrop);
+                    // Clear and populate tech list
+                    modalTechList.innerHTML = '';
+                    project.technologies.forEach(tech => {
+                        const li = document.createElement('li');
+                        li.textContent = tech;
+                        modalTechList.appendChild(li);
+                    });
+                    
+                    modalLink.href = project.link;
+                    modalLink.textContent = 'View Project';
+                    
+                    // Handle Figma link if available
+                    const modalFigmaLink = document.getElementById('modal-figma-link');
+                    if (project.figmaLink && modalFigmaLink) {
+                        modalFigmaLink.href = project.figmaLink;
+                        modalFigmaLink.style.display = 'inline-block';
+                    } else if (modalFigmaLink) {
+                        modalFigmaLink.style.display = 'none';
+                    }
+                    
+                    // Handle additional images if available
+                    const additionalImagesContainer = document.getElementById('additional-images');
+                    if (additionalImagesContainer) {
+                        additionalImagesContainer.innerHTML = '';
+                        
+                        if (project.additionalImages && project.additionalImages.length > 0) {
+                            project.additionalImages.forEach(img => {
+                                // Use col-6 for smaller screens (two per row) and col-12 for very small screens (one per row)
+                                const imgCol = document.createElement('div');
+                                imgCol.className = 'col-6 col-sm-6 mt-2';
+                                
+                                const imgElement = document.createElement('img');
+                                imgElement.src = img.src;
+                                imgElement.alt = img.alt;
+                                imgElement.className = 'img-fluid thumbnail';
+                                
+                                // Add aria-label for accessibility
+                                imgElement.setAttribute('aria-label', 'Click to enlarge ' + img.alt);
+                                
+                                // Make thumbnails clickable to enlarge with touch-friendly interaction
+                                imgElement.addEventListener('click', function() {
+                                    // Update main image
+                                    modalImage.src = this.src;
+                                    modalImage.alt = this.alt;
+                                    
+                                    // Visual feedback for selection - highlight active thumbnail
+                                    const allThumbnails = additionalImagesContainer.querySelectorAll('.thumbnail');
+                                    allThumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+                                    this.classList.add('active-thumbnail');
+                                    
+                                    // Scroll to the top of modal on mobile to see the enlarged image
+                                    if (window.innerWidth < 768) {
+                                        modalImage.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                });
+                                
+                                imgCol.appendChild(imgElement);
+                                additionalImagesContainer.appendChild(imgCol);
+                            });
+                        }
+                    }
+                    
+                    // Show modal
+                    if (bsProjectModal) {
+                        // Bootstrap 5 way
+                        bsProjectModal.show();
+                    } else {
+                        try {
+                            // jQuery way
+                            $(projectModal).modal('show');
+                        } catch (e) {
+                            // Fallback direct DOM manipulation
+                            projectModal.classList.add('show');
+                            projectModal.style.display = 'block';
+                            document.body.classList.add('modal-open');
+                            
+                            // Create backdrop if needed
+                            if (!document.querySelector('.modal-backdrop')) {
+                                const backdrop = document.createElement('div');
+                                backdrop.className = 'modal-backdrop fade show';
+                                document.body.appendChild(backdrop);
+                            }
+                        }
                     }
                 }
-            }
-        }
-    });
-    
-    // Add hover animation
-    thumbnail.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.05)';
-        this.querySelector('.project-overlay').style.opacity = '1';
-    });
-    
-    thumbnail.addEventListener('mouseleave', function() {
-        this.style.transform = '';
-        this.querySelector('.project-overlay').style.opacity = '0';
-    });
-});
+            });
+            
+            // Add hover animation
+            thumbnail.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.querySelector('.project-overlay').style.opacity = '1';
+            });
+            
+            thumbnail.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.querySelector('.project-overlay').style.opacity = '0';
+            });
+        });
         
         // Fix for modal closing
         const closeModal = () => {
@@ -716,4 +716,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
     }
+
+    // Rotation notification functionality
+    const rotationNotification = document.getElementById('rotation-notification');
+    const dismissButton = document.getElementById('dismiss-rotation');
+    let rotationDismissed = sessionStorage.getItem('rotationDismissed') === 'true';
+    
+    // Function to check orientation and show notification
+    function checkOrientation() {
+        // Only show on about page
+        if (!window.location.pathname.includes('about.html')) {
+            return;
+        }
+        
+        // Check if we're on mobile and in portrait mode
+        if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+            if (!rotationDismissed) {
+                rotationNotification.classList.add('show');
+            }
+        } else {
+            rotationNotification.classList.remove('show');
+        }
+    }
+    
+    // Dismiss button
+    if (dismissButton) {
+        dismissButton.addEventListener('click', function() {
+            rotationNotification.classList.remove('show');
+            rotationDismissed = true;
+            sessionStorage.setItem('rotationDismissed', 'true');
+        });
+    }
+    
+    // Check on page load and orientation change
+    window.addEventListener('orientationchange', checkOrientation);
+    window.addEventListener('resize', checkOrientation);
+    
+    // Initial check
+    checkOrientation();
+    
+    // Recheck orientation after a small delay to handle mobile devices
+    setTimeout(checkOrientation, 10000);
 });
