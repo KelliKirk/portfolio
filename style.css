@@ -1228,13 +1228,6 @@ p, button, a, li {
 }
 
 /* Skills note styling */
-.skills-note {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: rgba(90, 125, 154, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(90, 125, 154, 0.2);
-}
 
 .skills-note p {
     margin: 0;
