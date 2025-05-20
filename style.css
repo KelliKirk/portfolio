@@ -1559,27 +1559,33 @@ p, button, a, li {
 @media (max-width: 576px) and (min-width: 421px) {
     .projects-wall {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-        width: 90%;
-        max-width: 500px;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        width: 92%;
+        max-width: 380px;
         margin: 0 auto;
-        padding-top: 70px;
-        padding-bottom: 80px;
+        padding-top: 80px;
+        padding-bottom: 90px;
         position: relative;
     }
     
     .project-thumbnail {
         border: 4px solid #333;
-        box-shadow: 0 5px 13px rgba(0, 0, 0, 0.28);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
         height: auto;
-        aspect-ratio: 4/3;
+        aspect-ratio: 16/9;
+    }
+
+     .project-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     .project-overlay {
-        opacity: 0;
-        font-size: 12px;
-        padding: 6px;
+        opacity: 1;
+        font-size: 13px;
+        padding: 8px;
         transition: opacity 0.3s ease;
     }
     
@@ -1592,10 +1598,10 @@ p, button, a, li {
 @media (min-width: 375px) and (max-width: 420px) {
     .projects-wall {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px; 
-        width: 92%;  /* Slightly wider to make thumbnails bigger */
-        max-width: 340px;  /* Increased from 300px */
+        grid-template-columns: 1fr;
+        gap: 22px; 
+        width: 92%;  
+        max-width: 380px; 
         margin: 0 auto;
         padding-top: 80px; 
         padding-bottom: 90px; 
@@ -1607,7 +1613,7 @@ p, button, a, li {
         border: 4px solid #333;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         height: auto; 
-        aspect-ratio: 4/3;
+        aspect-ratio: 16/9;
     }
     
     .project-thumbnail img {
@@ -1618,8 +1624,8 @@ p, button, a, li {
     
     .project-overlay {
         opacity: 1;
-        font-size: 11px;  /* Slightly larger font */
-        padding: 5px;     /* Slightly more padding */
+        font-size: 13px;  
+        padding: 8px;     
         background-color: rgba(0, 0, 0, 0.75);
     }
 }
