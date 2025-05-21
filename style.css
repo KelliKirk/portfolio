@@ -987,7 +987,7 @@ p, button, a, li {
 
 /* Additional styles for small and very small screens */
 
-@media (max-width: 480px) {
+@media (min-width: 420px) and (max-width: 480px) {
     .nav-arrow {
         width: 80px !important; 
         height: 60px !important;
@@ -1023,12 +1023,12 @@ p, button, a, li {
 /* Specific optimizations for 375px width devices (iPhone SE, etc.) */
 @media (max-width: 375px) {
     .nav-arrow {
-        width: 60px !important;  /* Force override with !important */
+        width: 60px !important;  
         height: 45px !important;
         bottom: 15px !important;
-        top: auto !important;     /* Ensure we're using bottom positioning */
+        top: auto !important;     
         position: absolute !important;
-        transform: none !important; /* Remove any transforms that might affect positioning */
+        transform: none !important; 
     }
     
     .nav-arrow-left {
@@ -1567,6 +1567,7 @@ p, button, a, li {
         padding-top: 80px;
         padding-bottom: 90px;
         position: relative;
+        bottom: 30px;
     }
     
     .project-thumbnail {
@@ -1606,7 +1607,7 @@ p, button, a, li {
         padding-top: 80px; 
         padding-bottom: 90px; 
         position: relative;
-        top: 10px; 
+        bottom: 30px;
     }
     
     .project-thumbnail {
@@ -1813,6 +1814,7 @@ p, button, a, li {
         width: 90%;
         max-width: 500px;
         margin: 0 auto;
+        top: 10px;
     }
     
     .contact-title {
@@ -1826,11 +1828,15 @@ p, button, a, li {
 }
 
 /* Large phones (420px) */
-@media (max-width: 420px) {
+@media (max-width: 440px) {
     .glass-form-container {
         padding: 1.25rem;
         width: 92%;
         border-radius: 12px;
+        max-width: 400px;
+        margin: 0 auto 160px auto; 
+        position: relative;
+        z-index: 1;
     }
     
     .contact-title {
@@ -1850,19 +1856,54 @@ p, button, a, li {
     .btn-submit {
         max-width: 160px;
         padding: 0.7rem 1.25rem;
+        margin-bottom: 8px; /* Add some bottom margin to the button */
+    }
+}
+
+/* iPhone XR, iPhone 11, 12/13/14 (414px) */
+@media (min-width: 376px) and (max-width: 414px) {
+    .glass-form-container {
+        padding: 1.2rem;
+        width: 94%;
+        border-radius: 12px;
+        max-width: 390px;
+        margin: 0 auto 165px auto; 
+        position: relative;
+        z-index: 1;
+    }
+    
+    .contact-title {
+        font-size: 22px;
+        margin-bottom: 0.9rem;
+    }
+    
+    .contact-form label {
+        font-size: 14px;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.65rem;
+        border-radius: 6px;
+    }
+    
+    .btn-submit {
+        max-width: 150px;
+        padding: 0.6rem 1.1rem;
+        margin-bottom: 10px; /* Add some bottom margin to the button */
     }
 }
 
 /* Small phones (375px) */
 @media (max-width: 375px) {
     .glass-form-container { 
-    padding: 0.75rem;
-    width: 95%;
-    margin: 0 auto;
-    border-radius: 8px;
-    max-width: 320px; 
-    transform: scale(0.9);
-    top: -40px;
+        padding: 0.75rem;
+        width: 95%;
+        margin: 0 auto 160px auto; 
+        border-radius: 12px;
+        max-width: 320px;
+        transform: none; 
+        position: relative;
+        z-index: 1;
     }
     
     .contact-title {
@@ -1895,6 +1936,38 @@ p, button, a, li {
         padding: 0.45rem 0.8rem;
         font-size: 13px;
         margin-top: 0.85rem; 
+        margin-bottom: 10px;
         height: auto;
+    }
+}
+
+/* Extra small phones (320px and below) */
+@media (max-width: 320px) {
+    .glass-form-container { 
+        padding: 0.6rem;
+        width: 100%;
+        margin: 0 auto 90px auto; /* Added even more bottom margin */
+        border-radius: 10px;
+        max-width: 290px;
+        transform: none;
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Make text fields smaller */
+    .contact-form .form-control {
+        padding: 0.5rem;
+        font-size: 13px;
+    }
+    
+    /* Make the message textarea smaller */
+    textarea.form-control {
+        height: 80px;
+    }
+    
+    /* Further reduce title size */
+    .contact-title {
+        font-size: 16px;
+        margin-bottom: 0.5rem;
     }
 }
