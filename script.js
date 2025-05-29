@@ -171,12 +171,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         projekt4: {
-            title: 'Northern Lights Login Form',
-            image: 'images/loginform1.jpg',
-            description: 'A login form inspired by Northern Lights',
-            process: 'The inspiration for this login form came from seeing the Northern Lights. I created a simple login form and then added animations and styling to replicate the effect of Northern Lights.',
-            technologies: ['HTML5', 'CSS3'],
-            link: 'https://github.com/KelliKirk/Personal-Projects/tree/main/Coding%20practice'
+            title: 'Cartehnik Website',
+            image: 'images/cartehnik.png',
+            description: 'A website for a real body shop',
+            process: 'The project was a part of school curriculum where we had to make a website for a real client, using CMS. It was a group project and my responsibility was setting up the website, creating a layout and content using Blocksy theme. The buttons were styled with additional CSS and the site uses multiple plugins.',
+            technologies: ['WordPress', 'Blocksy', 'CSS3', 'WordPress plugins', 'AI image generation'],
+            link: 'https://vso24kirk.ita.voco.ee/wordpresskliendiprojekt/'
         }
     };
     
