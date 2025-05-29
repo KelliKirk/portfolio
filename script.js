@@ -75,31 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalTechList = document.getElementById('modal-tech-list');
         const modalLink = document.getElementById('modal-link');
         
-        // Project data - replace with your actual projects
-        const projectsData = {
-            projekt1: {
-                title: 'Projekt 1',
-                image: 'images/project1.jpg',
-                description: 'See on minu esimene projekt, kus lõin...',
-                technologies: ['HTML', 'CSS', 'JavaScript'],
-                link: '#'
-            },
-            projekt2: {
-                title: 'Projekt 2',
-                image: 'images/project2.jpg',
-                description: 'Teine projekt keskendus veebilehe disainile ja kasutajakogemuse parandamisele...',
-                technologies: ['React', 'Sass', 'Node.js'],
-                link: '#'
-            },
-            projekt3: {
-                title: 'Projekt 3',
-                image: 'images/project3.jpg',
-                description: 'Kolmandas projektis töötasin välja täisfunktsionaalse e-poe...',
-                technologies: ['JavaScript', 'MongoDB', 'Express.js'],
-                link: '#'
-            }
-        };
-        
         // Project modal functions
         function openProjectModal(projectId) {
             const project = projectsData[projectId];
@@ -185,9 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Memory Game',
             image: 'images/memorygame.jpg',
             description: 'A simple memory game with three different difficulties',
-            process: 'This memory game was created as another group project. The inspiration came from the Youtube video where someone was building a memory game. It uses a simulated API to fetch data from the mock database for scoring.',
+            process: 'This memory game was created as another group project. The inspiration came from the Youtube video where someone was building a memory game. It uses a simulated API to fetch data from the mock database for scoring. A player can select the difficulty and the number of cards to play.',
             technologies: ['React', 'Node.js', 'HTML5', 'CSS3'],
-            link: 'https://github.com/KelliKirk/memory_game'
+            link: 'https://github.com/KelliKirk/memory_game',
+            additionalImages: [
+                {
+                    src: 'images/raskusaste.png',
+                    alt: 'Memory Game difficulty and card selection'
+                }
+            ]
         },
         projekt4: {
             title: 'Northern Lights Login Form',
@@ -212,31 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalLink = document.getElementById('modal-link');
         
         // Initialize Bootstrap modal
-        let bsProjectModal = null;
-        
-        // Function to initialize the modal
-        const initModal = () => {
-            try {
-                // Bootstrap 5 way
-                bsProjectModal = new bootstrap.Modal(projectModal);
-            } catch (e) {
-                console.log("Error with Bootstrap 5 initialization, trying jQuery:", e);
-                try {
-                    // jQuery way (Bootstrap 4 and earlier)
-                    $(projectModal).modal({
-                        backdrop: true,
-                        keyboard: true,
-                        focus: true,
-                        show: false
-                    });
-                } catch (e2) {
-                    console.log("Both modal initializations failed:", e2);
-                }
-            }
-        };
-        
-        // Initialize modal
-        initModal();
+        const bsProjectModal = new bootstrap.Modal(projectModal);
         
         // Add click event to project thumbnails
         projectThumbnails.forEach(thumbnail => {
@@ -278,7 +235,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         if (project.additionalImages && project.additionalImages.length > 0) {
                             project.additionalImages.forEach(img => {
-                                // Use col-6 for smaller screens (two per row) and col-12 for very small screens (one per row)
                                 const imgCol = document.createElement('div');
                                 imgCol.className = 'col-6 col-sm-6 mt-2';
                                 
@@ -287,21 +243,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 imgElement.alt = img.alt;
                                 imgElement.className = 'img-fluid thumbnail';
                                 
-                                // Add aria-label for accessibility
                                 imgElement.setAttribute('aria-label', 'Click to enlarge ' + img.alt);
                                 
-                                // Make thumbnails clickable to enlarge with touch-friendly interaction
                                 imgElement.addEventListener('click', function() {
-                                    // Update main image
                                     modalImage.src = this.src;
                                     modalImage.alt = this.alt;
                                     
-                                    // Visual feedback for selection - highlight active thumbnail
                                     const allThumbnails = additionalImagesContainer.querySelectorAll('.thumbnail');
                                     allThumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
                                     this.classList.add('active-thumbnail');
                                     
-                                    // Scroll to the top of modal on mobile to see the enlarged image
                                     if (window.innerWidth < 768) {
                                         modalImage.scrollIntoView({ behavior: 'smooth' });
                                     }
@@ -314,27 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     
                     // Show modal
-                    if (bsProjectModal) {
-                        // Bootstrap 5 way
-                        bsProjectModal.show();
-                    } else {
-                        try {
-                            // jQuery way
-                            $(projectModal).modal('show');
-                        } catch (e) {
-                            // Fallback direct DOM manipulation
-                            projectModal.classList.add('show');
-                            projectModal.style.display = 'block';
-                            document.body.classList.add('modal-open');
-                            
-                            // Create backdrop if needed
-                            if (!document.querySelector('.modal-backdrop')) {
-                                const backdrop = document.createElement('div');
-                                backdrop.className = 'modal-backdrop fade show';
-                                document.body.appendChild(backdrop);
-                            }
-                        }
-                    }
+                    bsProjectModal.show();
                 }
             });
             
@@ -348,51 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.transform = '';
                 this.querySelector('.project-overlay').style.opacity = '0';
             });
-        });
-        
-        // Fix for modal closing
-        const closeModal = () => {
-            if (bsProjectModal) {
-                // Bootstrap 5 way
-                bsProjectModal.hide();
-            } else {
-                try {
-                    // jQuery way
-                    $(projectModal).modal('hide');
-                } catch (e) {
-                    // Manual DOM manipulation if all else fails
-                    projectModal.classList.remove('show');
-                    projectModal.style.display = 'none';
-                    document.body.classList.remove('modal-open');
-                    
-                    // Remove backdrop
-                    const backdrop = document.querySelector('.modal-backdrop');
-                    if (backdrop) backdrop.parentNode.removeChild(backdrop);
-                }
-            }
-        };
-        
-        // Find and bind all close triggers
-        const closeButtons = projectModal.querySelectorAll('[data-bs-dismiss="modal"], .btn-close, .btn-secondary');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                closeModal();
-            });
-        });
-        
-        // Close modal when clicking outside
-        projectModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-        
-        // Add escape key listener for modal
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && projectModal.classList.contains('show')) {
-                closeModal();
-            }
         });
     }
     

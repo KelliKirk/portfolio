@@ -673,16 +673,26 @@ p, button, a, li {
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    z-index: 1050;
 }
 
-.modal-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+.modal {
+    z-index: 1050;
 }
 
-.modal-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+.modal-backdrop {
+    z-index: 1040;
 }
 
+.modal-body {
+    position: relative;
+    z-index: 1051;
+}
+
+#modal-process {
+    position: relative;
+    z-index: 1051;
+}
 
 /* About modal specific styles */
 .about-profile {
