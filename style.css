@@ -2009,28 +2009,25 @@ p, button, a, li {
 
     /* Projects page - Center thumbnails and make them bigger */
     .projects-wall {
-        margin-top: 100px !important;
-        margin-bottom: 50px !important;
+        margin-top: 30px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         min-height: 400px;
         max-width: 1200px;
-        gap: 60px;
         margin-left: auto;
         margin-right: auto;
     }
     .project-thumbnail {
-        width: 450px !important;
-        height: 340px !important;
+        height: 320px;
+        width: 500px;
         cursor: pointer;
     }
     .project-thumbnail img {
         width: 100%;
-        height: 320px !important;
+        height: 320px;
         object-fit: cover;
-        border-radius: 8px;
     }
 
     /* Contact page - Center form and adjust positioning */
