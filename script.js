@@ -176,8 +176,24 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'A website for a real body shop',
             process: 'The project was a part of school curriculum where we had to make a website for a real client, using CMS. It was a group project and my responsibility was setting up the website, creating a layout and content using Blocksy theme. The buttons were styled with additional CSS and the site uses multiple plugins.',
             technologies: ['WordPress', 'Blocksy', 'CSS3', 'WordPress plugins', 'AI image generation'],
-            link: 'https://vso24kirk.ita.voco.ee/wordpresskliendiprojekt/'
-        }
+            link: 'https://cartehnik.ee'
+        },
+        projekt5: {
+            title: 'StrangerCalc',
+            image: 'images/strangercalc1.png',
+            description: 'A calculator app inspired by Stranger Things',
+            process: 'This is a simple calculator app I created while I was practicing my Python skills and familiarized myself with Flask and OOP in Python. The app also saves calculation history using PostgreSQL. The design of this app was inspired by my favorite show - Stranger Things. You can also view the design in Figma link below.',
+            technologies: ['Python', 'Flask', 'Figma', 'Prototyping', 'HTML5', 'CSS3', 'OOP', 'PostgreSQL'],
+            link: 'https://github.com/KelliKirk/strangercalc',
+            figmaLink: 'https://www.figma.com/design/brIbsKnhlDeINwQrzTVr6I/Stranger-Calc?node-id=2-165&t=yZcPYwmwAMszJnUV-1',
+            additionalImages: [
+                {
+                    src: 'images/strangercalc3.png',
+                    alt: 'Calculator app showing an error'
+                },
+            ]
+        },
+
     };
     
     // Project modal functionality for Bootstrap-styled projects
@@ -643,4 +659,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Recheck orientation after a small delay to handle mobile devices
     setTimeout(checkOrientation, 10000);
+
+    // Click-to-copy for footer contact info
+    function copyToClipboard(text) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text);
+        } else {
+            // fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+    }
+
+    function showCopyTooltip(element, message) {
+        const tooltip = document.createElement('span');
+        tooltip.className = 'copy-tooltip';
+        tooltip.textContent = message;
+        tooltip.style.position = 'absolute';
+        tooltip.style.background = '#5A7D9A';
+        tooltip.style.color = '#fff';
+        tooltip.style.padding = '2px 8px';
+        tooltip.style.borderRadius = '4px';
+        tooltip.style.fontSize = '0.9em';
+        tooltip.style.top = '-28px';
+        tooltip.style.left = '0';
+        tooltip.style.zIndex = '9999';
+        element.parentElement.style.position = 'relative';
+        element.parentElement.appendChild(tooltip);
+        setTimeout(() => {
+            tooltip.remove();
+        }, 1200);
+    }
+
+    const phoneLink = document.getElementById('copy-phone');
+    if (phoneLink) {
+        phoneLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            copyToClipboard(this.textContent.trim());
+            showCopyTooltip(this, 'Copied!');
+        });
+    }
+    const emailLink = document.getElementById('copy-email');
+    if (emailLink) {
+        emailLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            copyToClipboard(this.textContent.trim());
+            showCopyTooltip(this, 'Copied!');
+        });
+    }
 });
